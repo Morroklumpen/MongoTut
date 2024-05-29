@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installere MongoDB på Ubuntu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#oversikt">Oversikt</a></li>
+                <li><a href="#installasjon">Installere</a></li>
+                <li><a href="#konfigurasjon">Konfigurasjon</a></li>
+                <li><a href="#avinstallering">Avinstallere</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="oversikt">
+            <h1>Installere MongoDB Community Edition på Ubuntu</h1>
+            <p>Denne tutorialen viser deg hvordan du installerer MongoDB 7.0 Community Edition på Ubuntu.</p>
+            <div class="video-container">
+                <video controls>
+                    <source src="path/to/your/overview-video.mp4" type="video/mp4">
+                    Din nettleser støtter ikke videovisning.
+                </video>
+            </div>
+        </section>
+        <section id="installasjon">
+            <h2>Installere MongoDB</h2>
+            <h3>1. Importere public key</h3>
+            <p>Installer <code>gnupg</code> og <code>curl</code> hvis de ikke er installert:</p>
+            <pre><code>sudo apt-get install gnupg curl</code></pre>
+            <p>Importer MongoDBs offentlige GPG-nøkkel:</p>
+            <pre><code>curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor</code></pre>
+            <h3>2. Lage en listefil for MongoDB</h3>
+            <p>Lag listefilen <code>/etc/apt/sources.list.d/mongodb-org-7.0.list</code> for din Ubuntu-versjon:</p>
+            <pre><code>echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list</code></pre>
+            <h3>3. Oppdatere pakkedatabasen</h3>
+            <p>Oppdater den lokale pakkedatabasen:</p>
+            <pre><code>sudo apt-get update</code></pre>
+            <h3>4. Installere MongoDB</h3>
+            <p>Installer MongoDB-pakkene:</p>
+            <pre><code>sudo apt-get install -y mongodb-org</code></pre>
+            <h3>Kjøring av MongoDB</h3>
+            <p>Start MongoDB:</p>
+            <pre><code>sudo systemctl start mongod</code></pre>
+            <p>Sjekk at MongoDB kjører:</p>
+            <pre><code>sudo systemctl status mongod</code></pre>
+            <p>Sørg for at MongoDB starter automatisk ved omstart:</p>
+            <pre><code>sudo systemctl enable mongod</code></pre>
+        </section>
+        <section id="konfigurasjon">
+            <h2>Konfigurasjon</h2>
+            <p>Den offisielle MongoDB-pakken inkluderer en konfigurasjonsfil <code>/etc/mongod.conf</code>. Etter endringer, start MongoDB på nytt:</p>
+            <pre><code>sudo systemctl restart mongod</code></pre>
+        </section>
+        <section id="avinstallering">
+            <h2>Avinstallere MongoDB</h2>
+            <h3>1. Stoppe MongoDB</h3>
+            <p>Stopp MongoDB-prosessen:</p>
+            <pre><code>sudo systemctl stop mongod</code></pre>
+            <h3>2. Fjerne Pakker</h3>
+            <p>Fjern alle MongoDB-pakker:</p>
+            <pre><code>sudo apt-get purge mongodb-org*</code></pre>
+            <h3>3. Fjerne Data Kataloger</h3>
+            <p>Slett MongoDB databaser og loggfiler:</p>
+            <pre><code>sudo rm -r /var/log/mongodb
+sudo rm -r /var/lib/mongodb</code></pre>
+            <div class="video-container">
+                <video controls>
+                    <source src="path/to/your/uninstall-video.mp4" type="video/mp4">
+                    Din nettleser støtter ikke videovisning.
+                </video>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Tords MongoDB Tutorial. All rights reserved.</p>
+    </footer>
+</body>
+</html>
