@@ -23,7 +23,7 @@
             <p>Denne tutorialen viser deg hvordan du installerer MongoDB 7.0 Community Edition på Ubuntu.</p>
             <div class="video-container">
                 <video controls>
-                    <source src="path/to/your/overview-video.mp4" type="video/mp4">
+                    <source src="/content/MomentsDesktopclipfromJun022024.mp4" type="video/mp4">
                     Din nettleser støtter ikke videovisning.
                 </video>
             </div>
@@ -31,15 +31,15 @@
         <section id="installasjon">
             <h2>Installere MongoDB</h2>
             <h3>1. Importere public key</h3>
-            <p>Installer <code>gnupg</code> og <code>curl</code> hvis de ikke er installert:</p>
+            <p>Installer <code>gnupg</code> og <code>curl</code> hvis de ikke er installert: Det er pogrammer som hjelper med å kjøre mongoDB</p>
             <pre><code>sudo apt-get install gnupg curl</code></pre>
-            <p>Importer MongoDBs offentlige GPG-nøkkel:</p>
+            <p>Importer MongoDBs public key:</p>
             <pre><code>curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor</code></pre>
             <h3>2. Lage en listefil for MongoDB</h3>
             <p>Lag listefilen <code>/etc/apt/sources.list.d/mongodb-org-7.0.list</code> for din Ubuntu-versjon:</p>
             <pre><code>echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list</code></pre>
-            <h3>3. Oppdatere pakkedatabasen</h3>
-            <p>Oppdater den lokale pakkedatabasen:</p>
+            <h3>3. Oppdatere pakkeene</h3>
+            <p>Oppdater de lokale pakkene:</p>
             <pre><code>sudo apt-get update</code></pre>
             <h3>4. Installere MongoDB</h3>
             <p>Installer MongoDB-pakkene:</p>
@@ -71,7 +71,7 @@
 sudo rm -r /var/lib/mongodb</code></pre>
             <div class="video-container">
                 <video controls>
-                    <source src="path/to/your/uninstall-video.mp4" type="video/mp4">
+                    <source src="/content/3MomentsDesktopclipfromJun022024.mp4" type="video/mp4">
                     Din nettleser støtter ikke videovisning.
                 </video>
             </div>
